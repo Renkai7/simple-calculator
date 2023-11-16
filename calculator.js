@@ -1,27 +1,53 @@
-const num1 = Number(prompt("Choose the first number"));
-const num2 = Number(prompt("Choose the second number"));
-const operation = prompt("Choose an operation (+, -, *, /)");
+const getNumberInput = (promptMessage) => {
+	return Number(prompt(promptMessage));
+};
 
-if (typeof num1 != "number" || typeof num2 != "number") {
-	alert("Not a number");
-} else {
-	let result = 0;
+const getOperationInput = () => {
+	const operator = prompt("Choose an operation (+, -, *, /)");
+	return operator;
+};
 
-	if (operation === "+") {
-		result = num1 + num2;
-	} else if (operation === "-") {
-		result = num1 - num2;
-	} else if (operation === "*") {
-		result = num1 * num2;
-	} else if (operation === "/") {
-		if (num2 === 0) {
-			alert("Cannot divide by zero.");
-		} else {
-			result = num1 / num2;
-		}
-	} else {
-		alert("Invalid operation.");
+const isValidNumber = (num) => {
+	if (isNaN(num)) {
+		return false;
 	}
 
-	alert(`Result: ${result}`);
-}
+	return true;
+};
+
+const calculateResult = (num1, num2, operation) => {
+	if (operation === "+") {
+		return num1 + num2;
+	} else if (operation === "-") {
+		return num1 - num2;
+	} else if (operation === "*") {
+		return num1 * num2;
+	} else if (operation === "/") {
+		if (num2 === 0) {
+			return alert("Cannot divide by zero.");
+		} else {
+			return num1 / num2;
+		}
+	} else {
+		return alert("Invalid operation.");
+	}
+};
+
+const displayResult = (result) => {
+	return alert(`Result: ${result}`);
+};
+
+const main = () => {
+	const num1 = getNumberInput("Choose the first number");
+	const num2 = getNumberInput("Choose the second number");
+	const operation = getOperationInput();
+
+	if (isValidNumber(num1) && isValidNumber(num2)) {
+		const result = calculateResult(num1, num2, operation);
+		displayResult(result);
+	} else {
+		alert("Not a number");
+	}
+};
+
+main();
