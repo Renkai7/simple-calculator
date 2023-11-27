@@ -50,4 +50,18 @@ const main = () => {
 	}
 };
 
-main();
+// main();
+
+// DOM
+const btnsNumber = document.querySelectorAll(".numButton");
+const resultText = document.querySelector("#result");
+const displayNumber = (value) => {
+	resultText.value += value;
+};
+for (let i = 0; i < btnsNumber.length; i++) {
+	btnsNumber[i].addEventListener("click", () => {
+		displayNumber(btnsNumber[i].textContent);
+		console.log(btnsNumber[i].textContent);
+		console.log(typeof btnsNumber[i].textContent);
+	});
+}
