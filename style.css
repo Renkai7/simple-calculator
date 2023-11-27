@@ -1,0 +1,29 @@
+.calculator {
+	max-width: 300px;
+	margin: 0 auto;
+	background-color: #f4f4f4;
+	border-radius: 10px;
+	padding: 20px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+.button,
+.numButton {
+	background-color: #4a90e2;
+	color: white;
+	border-radius: 5px;
+	padding: 10px;
+	margin: 5px;
+	cursor: pointer;
+}
+.button:hover,
+.numButton:hover {
+	background-color: #3572b7;
+}
+.input {
+	background-color: white;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 10px;
+	font-size: 20px;
+	text-align: right;
+}
