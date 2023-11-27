@@ -5,10 +5,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>Simple Calculator</h1>
+    <div class="container mx-auto mt-10 calculator">
+        <div class="input mb-4">
+            <input type="text" id="result" readonly>
+        </div>
+        <div class="grid grid-cols-4 gap-2">
+            <button class="numButton">7</button>
+            <button class="numButton">8</button>
+            <button class="numButton">9</button>
+            <button class="button">+</button>
+
+            <button class="numButton">4</button>
+            <button class="numButton">5</button>
+            <button class="numButton">6</button>
+            <button class="button">-</button>
+
+            <button class="numButton">1</button>
+            <button class="numButton">2</button>
+            <button class="numButton">3</button>
+            <button class="button">*</button>
+
+            <button class="numButton">0</button>
+            <button class="button">.</button>
+            <button class="button">C</button>
+            <button class="button">=</button>
+        </div>
+    </div>
     <script src="calculator.js"></script>
 </body>
 
