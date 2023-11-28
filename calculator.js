@@ -1,67 +1,70 @@
-const getNumberInput = (promptMessage) => {
-	return Number(prompt(promptMessage));
-};
+// DOM
+const btnsNumber = document.querySelectorAll(".numButton");
+const resultText = document.querySelector("#result");
+const clearButton = document.querySelector(".clearButton");
+const btnsOperators = document.querySelectorAll(".operatorButton");
+const btnCalc = document.querySelector(".calcButton");
+const firstNumber = document.querySelector("#firstNumber");
+const savedOperator = document.querySelector("#operator");
 
-const getOperationInput = () => {
-	const operator = prompt("Choose an operation (+, -, *, /)");
-	return operator;
-};
+let num1 = 0;
+let num2 = 0;
+let operation = "";
+let result = 0;
+resultText.value = 0;
 
-const isValidNumber = (num) => {
-	if (isNaN(num)) {
-		return false;
+// Shows number button's values in the result field
+const displayNumber = (value) => {
+	// Remove default 0 value
+	if (resultText.value[0] === "0") {
+		resultText.value = "";
 	}
 
-	return true;
+	resultText.value += value;
 };
 
 const calculateResult = (num1, num2, operation) => {
 	if (operation === "+") {
-		return num1 + num2;
+		resultText.value = num1 + num2;
 	} else if (operation === "-") {
-		return num1 - num2;
+		resultText.value = num1 - num2;
 	} else if (operation === "*") {
-		return num1 * num2;
+		resultText.value = num1 * num2;
 	} else if (operation === "/") {
 		if (num2 === 0) {
 			return alert("Cannot divide by zero.");
 		} else {
-			return num1 / num2;
+			resultText.value = num1 / num2;
 		}
 	} else {
 		return alert("Invalid operation.");
 	}
 };
 
-const displayResult = (result) => {
-	return alert(`Result: ${result}`);
-};
-
-const main = () => {
-	const num1 = getNumberInput("Choose the first number");
-	const num2 = getNumberInput("Choose the second number");
-	const operation = getOperationInput();
-
-	if (isValidNumber(num1) && isValidNumber(num2)) {
-		const result = calculateResult(num1, num2, operation);
-		displayResult(result);
-	} else {
-		alert("Not a number");
-	}
-};
-
-// main();
-
-// DOM
-const btnsNumber = document.querySelectorAll(".numButton");
-const resultText = document.querySelector("#result");
-const displayNumber = (value) => {
-	resultText.value += value;
-};
+// Gives each numbered button an event listener
 for (let i = 0; i < btnsNumber.length; i++) {
 	btnsNumber[i].addEventListener("click", () => {
 		displayNumber(btnsNumber[i].textContent);
-		console.log(btnsNumber[i].textContent);
-		console.log(typeof btnsNumber[i].textContent);
 	});
 }
+
+for (let i = 0; i < btnsOperators.length; i++) {
+	btnsOperators[i].addEventListener("click", () => {
+		num1 = Number(resultText.value);
+		operation = btnsOperators[i].textContent;
+		firstNumber.textContent = num1;
+		savedOperator.textContent = operation;
+		resultText.value = 0;
+	});
+}
+
+btnCalc.addEventListener("click", () => {
+	num2 = Number(resultText.value);
+	calculateResult(num1, num2, operation);
+});
+
+clearButton.addEventListener("click", () => {
+	firstNumber.textContent = "";
+	savedOperator.textContent = "";
+	resultText.value = 0;
+});
