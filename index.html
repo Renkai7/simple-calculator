@@ -9,33 +9,41 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-    <div class="container mx-auto mt-10 calculator">
-        <div class="input mb-4">
-            <input type="text" id="result" readonly>
+<body class="bg-gray-800">
+    <main class="container mx-auto flex items-center h-screen">
+        <div class="mx-auto mt-10 calculator">
+
+            <div class="input mb-4 relative">
+                <div class="absolute top-0 right-0 p-2 text-xs text-gray-600">
+                    <span id="firstNumber"></span>
+                    <span id="operator"></span>
+                </div>
+                <input type="text" id="result" readonly>
+            </div>
+            <div class="grid grid-cols-4 gap-2" id="buttonContainer">
+                <button class="numButton">7</button>
+                <button class="numButton">8</button>
+                <button class="numButton">9</button>
+                <button class="button operatorButton">+</button>
+
+                <button class="numButton">4</button>
+                <button class="numButton">5</button>
+                <button class="numButton">6</button>
+                <button class="button operatorButton">-</button>
+
+                <button class="numButton">1</button>
+                <button class="numButton">2</button>
+                <button class="numButton">3</button>
+                <button class="button operatorButton">*</button>
+
+                <button class="numButton">0</button>
+                <button class="button">.</button>
+                <button class="button clearButton">C</button>
+                <button class="button calcButton">=</button>
+            </div>
         </div>
-        <div class="grid grid-cols-4 gap-2">
-            <button class="numButton">7</button>
-            <button class="numButton">8</button>
-            <button class="numButton">9</button>
-            <button class="button">+</button>
+    </main>
 
-            <button class="numButton">4</button>
-            <button class="numButton">5</button>
-            <button class="numButton">6</button>
-            <button class="button">-</button>
-
-            <button class="numButton">1</button>
-            <button class="numButton">2</button>
-            <button class="numButton">3</button>
-            <button class="button">*</button>
-
-            <button class="numButton">0</button>
-            <button class="button">.</button>
-            <button class="button">C</button>
-            <button class="button">=</button>
-        </div>
-    </div>
     <script src="calculator.js"></script>
 </body>
 
